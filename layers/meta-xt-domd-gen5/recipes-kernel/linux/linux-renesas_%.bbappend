@@ -9,16 +9,13 @@ ADDITIONAL_DEVICE_TREES = "${XT_DEVICE_TREES}"
 SRC_URI = "${RENESAS_BSP_URL};nocheckout=1;branch=${BRANCH};protocol=https"
 
 SRC_URI += " \
-    file://defconfig \
     file://vsock.cfg \
     file://chosen.dtsi;subdir=git/arch/arm64/boot/dts/renesas \
     file://r8a78000-x5h.dts;subdir=git/arch/arm64/boot/dts/renesas \
     file://r8a78000-x5h-cr52.dts;subdir=git/arch/arm64/boot/dts/renesas \
 "
 
-KBUILD_DEFCONFIG = ""
 KERNEL_DEVICETREE = ""
-KCONFIG_MODE = "--allnoconfig"
 
 # Add ADDITIONAL_DEVICE_TREES to SRC_URIs and to KERNEL_DEVICETREEs
 python __anonymous () {
