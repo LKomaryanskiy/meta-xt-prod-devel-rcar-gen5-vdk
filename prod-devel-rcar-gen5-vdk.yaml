@@ -289,4 +289,20 @@ parameters:
                 gpt_type: B921B045-1DF0-41C3-AF44-4C6F280D3FAE # Linux aarch64 root
                 type: raw_image
                 image_path: "%{YOCTOS_WORK_DIR}/%{DOMU_BUILD_DIR}/tmp/deploy/images/%{DOMU_MACHINE}/%{BUILD_TARGET_DOMU}-%{DOMU_MACHINE}.ext4"
-
+  ENABLE_FWK:
+    desc: "Build with frameworks support"
+    "yes":
+      default: true
+      overrides:
+        variables:
+          XT_DOMD_DTB_NAME: "%{SOC_FAMILY}-%{DOMD_MACHINE}-domd-cr52.dtb"
+          XT_XEN_DTB_NAME: "%{SOC_FAMILY}-%{DOMD_MACHINE}-xen-cr52.dtb"
+          XT_DOMD_CONFIG_NAME: "domd-x5h-cr52.cfg"
+          XT_DOMU_CONFIG_NAME: "domu-x5h-cr52.cfg"
+    "no":
+      overrides:
+        variables:
+          XT_DOMD_DTB_NAME: "%{SOC_FAMILY}-%{DOMD_MACHINE}-domd.dtb"
+          XT_XEN_DTB_NAME: "%{SOC_FAMILY}-%{DOMD_MACHINE}-xen.dtb"
+          XT_DOMD_CONFIG_NAME: "domd-x5h.cfg"
+          XT_DOMU_CONFIG_NAME: "domu-x5h.cfg"
